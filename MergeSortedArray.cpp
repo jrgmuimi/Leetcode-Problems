@@ -10,8 +10,8 @@ public: // O(m+n) Time Complexity, O(m+n) Space Complexity (Because of using the
         if (!nums2.empty()) // If nums2 is empty then there are no elements to merge/combine, and so nums1 is already sorted
         {
             for (int i = 0; i < total_len; i++) 
-            { // First check that we haven't already sorted all elements in num2, if so, then check the opposite and see if we've already
-                // sorted all the elements in nums1 OR the currents nums2 element is < than the current nums1 element
+            { // First check that we still have elements to sort in nums2 (index not out of bound), if so, then check the opposite and see if we've already
+                // sorted all the elements in nums1 (nums2 will fill the rest of the "sorted" vector) OR the current nums2 element is < than the current nums1 element
 
                 // If one of the two latter conditions hold, then the current nums2 element must be the next sorted element.
                 if ((n2ind < n) && ((n1ind >= m) || (nums2[n2ind] < nums1[n1ind]))) // Can also use <= to Tiebreak
@@ -19,7 +19,8 @@ public: // O(m+n) Time Complexity, O(m+n) Space Complexity (Because of using the
                     sorted[i] = nums2[n2ind];
                     n2ind++;
                 }
-                else // If there are no more nums2 elements to sort, then sort nums1, OR if current nums2 element is > current nums1 AND there are elements to sort in nums1
+                else // If there are no more nums2 elements to sort, then sort nums1, 
+                // OR if current nums1 element is < current nums2 AND there are elements to sort in nums1
                 {
                     sorted[i] = nums1[n1ind];
                     n1ind++;

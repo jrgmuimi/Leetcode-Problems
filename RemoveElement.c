@@ -5,7 +5,7 @@ void swap(int* nums, int index1, int index2) // Swap two elements in the nums ar
     nums[index2] = cp;
 }
 
-// O(n^2) Time Complexity [Worst Case - If all elements in the array are the target value], O(1) Space Complexity
+// O(n^2) Time Complexity [Worst Case - If all elements in the array are the target value n(n+1) / 2 Operations], O(1) Space Complexity
 int removeElement(int* nums, int numsSize, int val) 
 {
     int not_val_ct = 0; // Count number of non-val elements

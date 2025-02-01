@@ -28,7 +28,7 @@ int divide(int dividend, int divisor)
         int shift_ct = 0; // For 2^0
         long cpy = abs_divis; // Variable used to shift the divisor left while preserving original divisor
 
-        while ((cpy<<1) < abs_divid) // If we can shift the divisor left, while still being < dividend, then do so
+        while ((cpy<<1) <= abs_divid) // If we can shift the divisor left, while still being <= dividend, then do so
         {
             cpy <<= 1;
             shift_ct++;

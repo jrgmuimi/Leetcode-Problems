@@ -11,7 +11,14 @@ https://leetcode.com/problems/divide-two-integers/solutions/1516367/complete-thi
 */
 
 int divide(int dividend, int divisor) 
-{ // O(?) Time Complexity, O(1) Space Complexity
+{ /* O(log[base 2]**2(dividend)) Time Complexity (Estimate), O(1) Space Complexity
+Considering the input size is limited to the 32-bit signed integer range, the worst case I can imagine is if the dividend is INT_MAX and the
+divisor is 1. In order for cpy or 1 in the code below to shift to INT_MIN, it has to shift 30 times which is 1073741824. It cant shift 31
+because 2^31 = 2147483648 which is out of range of INT_MAX (2^31-1). Additionally, once INT_MAX is subtracted by 2^30, we get the same issue:
+We have to use 2^29 and not 2^30, and so forth. So the number of loops/shifts are a summation from n = 0 to 30, resulting in ~465 loops.
+Hence the O(log[base 2]**2(dividend)) Running Time. In summation: Outside Loop Runs log_2(INT_MAX) ~= 31 times, and inside loop runs 30 times
+at beginning but decreases by 1 each outside loop. In worst case.
+*/
     int dividIsNeg = (dividend < 0); // Check if the dividend or the divisor is negative
     int divisIsNeg = (divisor < 0); // Will reapply the sign at end
 
